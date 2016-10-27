@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Baby } from '../model/baby';
+import { HeroService } from '../service/baby.service';
 
 @Component({
-    selector: 'my-app',
+    selector: 'bnbapp',
 
     template:`
         <h1>{{title}}</h1>
 
 
-        <h2>My Heroes</h2>
-        <ul class="heroes">
-            <li *ngFor="let hero of heroes"
-                [class.selected]="hero === selectedHero"
-                (click)="onSelect(hero)">
+        <h2>Babylone No Baby</h2>
+        <ul class="babies">
+            <li *ngFor="let baby of babies"
+                [class.selected]="baby === selectedBaby"
+                (click)="onSelect(baby)">
 
-                <span class="badge">{{hero.id}}</span> {{hero.name}}
+                <span class="badge">{{baby.id}}</span> {{baby.name}}
             </li>
         </ul>
 
-        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+        <babydetailview [baby]="selectedBaby"></babydetailview>
 
     `,
     styles: [`
@@ -29,13 +29,14 @@ import { HeroService } from './hero.service';
           background-color: #CFD8DC !important;
           color: white;
         }
-        .heroes {
+        .babies {
           margin: 0 0 2em 0;
           list-style-type: none;
           padding: 0;
           width: 15em;
         }
-        .heroes li {
+
+        .babies li {
           cursor: pointer;
           position: relative;
           left: 0;
@@ -45,20 +46,22 @@ import { HeroService } from './hero.service';
           height: 1.6em;
           border-radius: 4px;
         }
-        .heroes li.selected:hover {
+
+        .babies li.selected:hover {
           background-color: #BBD8DC !important;
           color: white;
         }
-        .heroes li:hover {
+
+        .babies li:hover {
           color: #607D8B;
           background-color: #DDD;
           left: .1em;
         }
-        .heroes .text {
+        .babies .text {
           position: relative;
           top: -3px;
         }
-        .heroes .badge {
+        .babies .badge {
           display: inline-block;
           font-size: small;
           color: white;
@@ -74,7 +77,7 @@ import { HeroService } from './hero.service';
         }
     `],
 
-    providers: [HeroService]
+    providers: [BabyService]
 })
 
 
@@ -82,25 +85,25 @@ import { HeroService } from './hero.service';
 export class AppComponent implements OnInit {
 
     /**  Public Variable  **/
-    title = 'Tour of Heroes';
-    heroes: Hero[];
-    selectedHero: Hero;
+    title = 'Babylone No Baby';
+    babies: Baby[];
+    selectedBaby: Baby;
 
     /**  Constructor  **/
-    constructor(private heroService: HeroService) { }
+    constructor(private babyService: BabyService) { }
 
     /**  Public Method  **/
-    onSelect(hero: Hero): void {
-        this.selectedHero = hero;
+    onSelect(baby: Baby): void {
+        this.selectedBaby = baby;
     }
 
     /**  Fetch and Load heroes through HeroService  **/
-    getHeroes(): void {
-        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    getBabies(): void {
+        this.babyService.getBabies().then(babies => this.babies = babies);
     }
 
     /**  OnInit Interface  **/
     ngOnInit(): void {
-        this.getHeroes();
+        this.getBabies();
     }
 }
