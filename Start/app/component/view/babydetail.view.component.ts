@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Hero } from '../../model/baby';
+import { Baby } from '../../model/baby';
 
 
 @Component({

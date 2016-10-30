@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
 import { Baby } from '../model/baby';
-import { HeroService } from '../service/baby.service';
+import { BabyService } from '../service/baby.service';
 
 @Component({
     selector: 'bnbapp',
@@ -82,7 +82,7 @@ import { HeroService } from '../service/baby.service';
 
 
 
-export class AppComponent implements OnInit {
+export class BnbAppComponent implements OnInit {
 
     /**  Public Variable  **/
     title = 'Babylone No Baby';

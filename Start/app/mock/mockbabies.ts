@@ -1,4 +1,4 @@
-import { Baby } from './model/baby';
+import { Baby } from '../model/baby';
 
 export const BABIES: Baby[] = [
     {id: 1, name: 'Calidoxa'},
